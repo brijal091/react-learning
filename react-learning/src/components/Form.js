@@ -1,6 +1,6 @@
 // we Have created hook here to create a state and use it in the form component
 import React, {useState} from 'react'
-import $ from 'jquery'
+// import $ from 'jquery'
 
 export default function Form(props) {
     const handleOnChange = (event) => {
@@ -22,6 +22,11 @@ export default function Form(props) {
         let content = text;
         navigator.clipboard.writeText(content)
     }
+    const removeExtraSpace = () =>{
+        let content = text;
+        var myStr = content.replace(/[ ][ ]*/g, ' ');
+        setText(myStr)
+    }
     {/* this is basic syntax in which we are creating a varible text which has default value "Enter your text Here" and whenever we want to chagne this, we can use setText to change it.  we can not change it dairectly, beacuse it's a state. so react dosen't allow us to change this dairectly, so we need hooks to change this. we can only change it by setText. */}
     const [text,setText] = useState('');
     {/* changing the value of text state here by the following */}
@@ -39,6 +44,7 @@ export default function Form(props) {
                     <button onClick={handleClickLower} className="btn btn-success mb-3 mx-3">Convert to Lowercase</button>
                     <button onClick={handleClickClear} className="btn btn-danger mb-3 ">Clear</button>
                     <button onClick={handleClickCopy} className="btn btn-dark mb-3 mx-3">Copy</button>
+                    <button onClick={removeExtraSpace} className="btn btn-warning mb-3 mx-3">Remove Extra Spaces</button>
                 </div>
         </div>
         <div className="container">
