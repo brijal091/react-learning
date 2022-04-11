@@ -3,32 +3,58 @@ import React, {useState} from 'react'
 // import $ from 'jquery'
 
 export default function Form(props) {
+    const [text,setText] = useState('');
     const handleOnChange = (event) => {
         setText(event.target.value);
     }
     const handleClickUpper = () =>{
-        let newtext = text.toUpperCase();
-        setText(newtext)
+        if(text.trim().length !== 0){
+            let newtext = text.toUpperCase();
+            setText(newtext);
+            props.showAlert("Converted To UpperCase Succesfully", "success");
+            // console.log(text.trim())
+        }else{
+            alert("Pleaase Enter the Text Before")
+        }
     }
     const handleClickLower = () =>{
+    if(text.trim().length !== 0){
         let newtext = text.toLowerCase();
-        setText(newtext)
+        setText(newtext);
+        props.showAlert("Converted To LowerCase Succesfully", "success");
+    }else{
+        alert("Pleaase Enter the Text Before")
+    }
     }
     const handleClickClear = () =>{
+    if(text.trim().length !== 0){
         let newtext = '';
-        setText(newtext)
+        setText(newtext);
+        props.showAlert("Text Cleared Succesfully", "success");
+    }else{
+        alert("Pleaase Enter the Text Before")
+    }
     }
     const handleClickCopy = () =>{
+    if(text.trim().length !== 0){
         let content = text;
-        navigator.clipboard.writeText(content)
+        navigator.clipboard.writeText(content);
+        props.showAlert("Text Copied Succesfully.", "success");
+    }else{
+        alert("Pleaase Enter the Text Before")
+    }
     }
     const removeExtraSpace = () =>{
+    if(text.trim().length !== 0){
         let content = text;
         var myStr = content.replace(/[ ][ ]*/g, ' ');
-        setText(myStr)
+        setText(myStr);
+        props.showAlert("Extra Space Removed Succesfully.", "success");
+    }else{
+        alert("Pleaase Enter the Text Before")
+    }
     }
     {/* this is basic syntax in which we are creating a varible text which has default value "Enter your text Here" and whenever we want to chagne this, we can use setText to change it.  we can not change it dairectly, beacuse it's a state. so react dosen't allow us to change this dairectly, so we need hooks to change this. we can only change it by setText. */}
-    const [text,setText] = useState('');
     {/* changing the value of text state here by the following */}
     // text = "Hello World"; worong way to change the state
     return (
@@ -37,7 +63,7 @@ export default function Form(props) {
             <h2 className="mt-5">{props.heading}</h2>
                 <div className="mb-2">
                     <textarea className="form-control" value={text} id="textarea" rows="10" onChange={handleOnChange} placeholder="Enter Your Text Here"></textarea>
-                </div>        
+                </div>  
                 <div className="col-auto">
                     {/* We can use setText like the following */}
                     <button onClick={handleClickUpper} className="btn btn-primary mb-3">Convert to Uppecase</button>

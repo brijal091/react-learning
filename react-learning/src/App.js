@@ -3,16 +3,29 @@ import Form from './components/Form';
 // import About from './components/About';
 import { useState } from 'react';
 import $ from 'jquery'
+import Alert from './components/Alert';
 
 function App() {
   const [mode, setMode] = useState('light'); // it shows that weather the Dark mode is enabled or not
   const [switchMode,setswitchMode] = useState('Darkmode');
+  const [alert, setAlert] = useState(null);
+
+  const showAlert = (message, type) => {
+    setAlert({
+      msg:  message,
+      type: type
+    })
+    setTimeout(() => {
+      setAlert(null);
+    }, 2000);
+  }
   const tooglemode = () => {
     if(mode === 'light'){
       setMode('dark');
       $('body').css('background-color', 'rgb(105, 105, 115)');
       $("#main-container-body").attr('style', "Filter: invert(100%);")
       setswitchMode("LightMode");
+      showAlert("Dark Mode Enabled SusessFully", "success");
       // We are using Ternary operator of javascript so i have commented it
       // $(".form-check-label").addClass("text-light")
     }
@@ -21,6 +34,7 @@ function App() {
       $('body').css('background-color', 'white');
       $("#main-container-body").attr('style', "Filter: invert(0%);")
       setswitchMode("Darkmode");
+      showAlert("Light Mode Enabled SusessFully", "success");
       // We are using Ternary operator of javascript so i have commented it
       // $(".form-check-label").removeClass("text-light")
     }
@@ -31,11 +45,11 @@ function App() {
     <Navbar title="TextUtils" mode = {mode} toogleMode={tooglemode} switchMode={switchMode}/>
     {/* if no props are set then default will be loded */}
     {/* <Navbar /> */}
-
+    <Alert alert={alert}/>
     <div id="main-container-body">
     {/* if you want to see this form then uncomment it. */}
     <div className="container">
-      <Form heading="Enter the Text to Analyze"/>
+      <Form heading="Enter the Text to Analyze" showAlert={showAlert}/>
     </div>
 
 {/* component ot add Dark mode in out App */}
