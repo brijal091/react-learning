@@ -1,5 +1,9 @@
 // we Have created hook here to create a state and use it in the form component
 import React, {useState} from 'react'
+
+//  I have read the concept of Helmet from Medium . : `https://betterprogramming.pub/how-to-customize-the-title-of-any-page-in-react-45ef14d2a695  ` 
+// It's used to change the dynamic Title 
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 // import $ from 'jquery'
 
 export default function Form(props) {
@@ -59,6 +63,12 @@ export default function Form(props) {
     // text = "Hello World"; worong way to change the state
     return (
         <>
+        {/* This is Helmet tag imported from the the react-helmet library to make the title dynamic Besides that note that Helmet is unSafe. So We have used react-helmet-async, But the thing is we need to use HelemetProvider and then inside Helmet */}
+        <HelmetProvider>
+            <Helmet>
+            <title>CoderGuides | Home</title>
+            </Helmet>
+        </HelmetProvider>
         <div className='container'>
             <h2 className="mt-5">{props.heading}</h2>
                 <div className="mb-2">

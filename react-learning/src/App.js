@@ -1,9 +1,18 @@
 import Navbar from './components/Navbar';
 import Form from './components/Form';
-// import About from './components/About';
+import About from './components/About';
 import { useState } from 'react';
 import $ from 'jquery'
 import Alert from './components/Alert';
+// import CustomTheme from './components/CustomTheme';
+
+// Using react Router 
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
 
 function App() {
   const [mode, setMode] = useState('light'); // it shows that weather the Dark mode is enabled or not
@@ -39,26 +48,47 @@ function App() {
       // $(".form-check-label").removeClass("text-light")
     }
   }
+
+  // Creating a custom Theme 
+
+  const [theme, setTheme] = useState(null);
+  const changeTheme = () => {
+    let back_color = document.getElementById('back-Color').value;
+    let text_color = document.getElementById('text-Color').value;
+    setTheme(
+      
+        'backgroundColor', back_color, 
+        'color', text_color
+      );
+    $('body').css('backgroundColor', back_color, 'color', text_color);
+    // $('body').css('backgroundColor', back_color, 'color', text_color);
+    showAlert("Custom Theme Applied SusessFully", "success");
+  }
+  
   return (
     <>
-    {/* i have created one module with Navbar and adding props inside */}
-    <Navbar title="TextUtils" mode = {mode} toogleMode={tooglemode} switchMode={switchMode}/>
-    {/* if no props are set then default will be loded */}
-    {/* <Navbar /> */}
-    <Alert alert={alert}/>
-    <div id="main-container-body">
-    {/* if you want to see this form then uncomment it. */}
-    <div className="container">
-      <Form heading="Enter the Text to Analyze" showAlert={showAlert}/>
-    </div>
+      {/* if no props are set then default will be loded */}
+      {/* <Navbar /> */}
+      {/* <CustomTheme changeTheme={changeTheme} theme={theme}/> */}
+      {/* <div id="main-container-body"> */}
+      {/* if you want to see this form then uncomment it. */}
+      {/* <div className="container">
+        <Form heading="Enter the Text to Analyze" showAlert={showAlert}/>
+      </div> */}
 
-{/* component ot add Dark mode in out App */}
-{/* if you want to see this form then uncomment it. */}
-    {/* <div className="container">
-      <About />
-    </div> */}
-    </div>
-   </>
+
+      {/* i have created one module with Navbar and adding props inside */}
+    <Router>
+      <Navbar title="TextUtils" mode = {mode} toogleMode={tooglemode} switchMode={switchMode}/>
+      <Alert alert={alert}/>
+      {/* I am trying to use Router For better user experience.  */}
+      <Routes>
+            {/* <Navbar title="TextUtils" mode = {mode} toogleMode={tooglemode} switchMode={switchMode}/> */}
+            <Route exact path='/' element={<Form heading="Enter the Text to Analyze" showAlert={showAlert}/>} />
+            <Route exact path='/about' element={<About />} />
+      </Routes>
+    </Router>
+    </>
   );
 }
 
