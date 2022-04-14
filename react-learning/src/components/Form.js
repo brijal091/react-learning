@@ -49,20 +49,20 @@ export default function Form(props) {
     }
     }
     const removeExtraSpace = () =>{
-    if(text.trim().length !== 0){
-        let content = text;
-        var myStr = content.replace(/[ ][ ]*/g, ' ');
-        setText(myStr);
-        props.showAlert("Extra Space Removed Succesfully.", "success");
-    }else{
-        alert("Pleaase Enter the Text Before")
+        if(text.trim().length !== 0){
+            let content = text;
+            var myStr = content.replace(/[ ][ ]*/g, ' ');
+            setText(myStr);
+            props.showAlert("Extra Space Removed Succesfully.", "success");
+        }else{
+            alert("Pleaase Enter the Text Before")
+        }
     }
-    }
-    {/* this is basic syntax in which we are creating a varible text which has default value "Enter your text Here" and whenever we want to chagne this, we can use setText to change it.  we can not change it dairectly, beacuse it's a state. so react dosen't allow us to change this dairectly, so we need hooks to change this. we can only change it by setText. */}
-    {/* changing the value of text state here by the following */}
-    // text = "Hello World"; worong way to change the state
     return (
         <>
+        {/* this is basic syntax in which we are creating a varible text which has default value "Enter your text Here" and whenever we want to chagne this, we can use setText to change it.  we can not change it dairectly, beacuse it's a state. so react dosen't allow us to change this dairectly, so we need hooks to change this. we can only change it by setText. 
+    
+        changing the value of text state here by the this ,text = "Hello World"; worong way to change the state*/}
         {/* This is Helmet tag imported from the the react-helmet library to make the title dynamic Besides that note that Helmet is unSafe. So We have used react-helmet-async, But the thing is we need to use HelemetProvider and then inside Helmet */}
         <HelmetProvider>
             <Helmet>

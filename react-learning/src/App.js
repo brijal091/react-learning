@@ -11,7 +11,6 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link
 } from "react-router-dom";
 
 function App() {
@@ -51,19 +50,19 @@ function App() {
 
   // Creating a custom Theme 
 
-  const [theme, setTheme] = useState(null);
-  const changeTheme = () => {
-    let back_color = document.getElementById('back-Color').value;
-    let text_color = document.getElementById('text-Color').value;
-    setTheme(
+  // const [theme, setTheme] = useState(null);
+  // const changeTheme = () => {
+  //   let back_color = document.getElementById('back-Color').value;
+  //   let text_color = document.getElementById('text-Color').value;
+  //   setTheme(
       
-        'backgroundColor', back_color, 
-        'color', text_color
-      );
-    $('body').css('backgroundColor', back_color, 'color', text_color);
-    // $('body').css('backgroundColor', back_color, 'color', text_color);
-    showAlert("Custom Theme Applied SusessFully", "success");
-  }
+  //       'backgroundColor', back_color, 
+  //       'color', text_color
+  //     );
+  //   $('body').css('backgroundColor', back_color, 'color', text_color);
+  //   // $('body').css('backgroundColor', back_color, 'color', text_color);
+  //   showAlert("Custom Theme Applied SusessFully", "success");
+  // }
   
   return (
     <>
