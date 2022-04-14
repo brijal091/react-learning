@@ -1,4 +1,6 @@
 import React, {useState} from 'react'
+import { Helmet, HelmetProvider } from 'react-helmet-async';
+
 // import $ from 'jquery'
 
 export default function About() {    
@@ -40,6 +42,11 @@ export default function About() {
      }
     return (
     <>
+    <HelmetProvider>
+            <Helmet>
+            <title>Word Counter | About</title>
+            </Helmet>
+        </HelmetProvider>
     <div className="container">
         <h1 className='mt-5'>About Us</h1>
         <div id="main-container">

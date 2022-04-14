@@ -66,7 +66,7 @@ export default function Form(props) {
         {/* This is Helmet tag imported from the the react-helmet library to make the title dynamic Besides that note that Helmet is unSafe. So We have used react-helmet-async, But the thing is we need to use HelemetProvider and then inside Helmet */}
         <HelmetProvider>
             <Helmet>
-            <title>CoderGuides | Home</title>
+            <title>Word Counter | Home</title>
             </Helmet>
         </HelmetProvider>
         <div className='container'>
