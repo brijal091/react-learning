@@ -1,6 +1,7 @@
 import Navbar from './components/Navbar';
 import Form from './components/Form';
 import About from './components/About';
+import About2 from './components/About2';
 import { useState } from 'react';
 import $ from 'jquery'
 import Alert from './components/Alert';
@@ -87,6 +88,7 @@ function App() {
             {/* <Navbar title="TextUtils" mode = {mode} toogleMode={tooglemode} switchMode={switchMode}/> */}
             <Route exact path='/' element={<Form heading="Enter the Text to Analyze" showAlert={showAlert}/>} />
             <Route exact path='/about' element={<About />} />
+            <Route exact path='/about2' element={<About2  mode = {mode}/>} />
       </Routes>
     </Router>
     </>

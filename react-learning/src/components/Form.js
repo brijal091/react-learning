@@ -76,17 +76,17 @@ export default function Form(props) {
                 </div>  
                 <div className="col-auto">
                     {/* We can use setText like the following */}
-                    <button onClick={handleClickUpper} className="btn btn-primary mb-3">Convert to Uppecase</button>
-                    <button onClick={handleClickLower} className="btn btn-success mb-3 mx-3">Convert to Lowercase</button>
-                    <button onClick={handleClickClear} className="btn btn-danger mb-3 ">Clear</button>
-                    <button onClick={handleClickCopy} className="btn btn-dark mb-3 mx-3">Copy</button>
-                    <button onClick={removeExtraSpace} className="btn btn-warning mb-3 mx-3">Remove Extra Spaces</button>
+                    <button onClick={handleClickUpper} className="btn btn-primary mx-1 my-1">Convert to Uppecase</button>
+                    <button onClick={handleClickLower} className="btn btn-success mx-1 my-1">Convert to Lowercase</button>
+                    <button onClick={handleClickClear} className="btn btn-danger mx-1 my-1 ">Clear</button>
+                    <button onClick={handleClickCopy} className="btn btn-dark mx-1 my-1">Copy</button>
+                    <button onClick={removeExtraSpace} className="btn btn-warning mx-1 my-1">Remove Extra Spaces</button>
                 </div>
         </div>
         <div className="container">
             <h2>Your Text Summery</h2>
-            {/* i am doing minus one because by default js is taking a sinlgle space as one word.  */}
-            <p>{text.split(" ").length-1} Words and {text.length} character</p>
+            {/* Here text.split will creat an array spliting by words, and filter will take each of word from it  and check if it is space or not.  it will return the lenth of new array which is filtered. */}
+            <p>{text.split(" ").filter((element) => {return element.length !== 0}).length} Words and {text.length} character</p>
             <p>{0.008 * text.split(" ").length} min To Read</p>
             <h3>PreView</h3>
             <p>{text}</p>

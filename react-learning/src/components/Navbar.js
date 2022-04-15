@@ -21,6 +21,9 @@ function Navbar(props) {
                 {/* <a className="nav-link" href="/" style = {{color:'blue'}}>About</a> */}
                 <Link className="nav-link" to="/about">About</Link>
                 </li>
+                <li className="nav-item">
+                <Link className="nav-link" to="/about2">About2</Link>
+                </li>
             </ul>
             <div className={`form-check form-switch mx-3 text-${props.mode === 'dark'?'light':'dark'}`}>
             <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onClick={props.toogleMode} />
