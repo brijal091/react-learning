@@ -12,51 +12,33 @@ export default function Form(props) {
         setText(event.target.value);
     }
     const handleClickUpper = () =>{
-        if(text.trim().length !== 0){
+       
             let newtext = text.toUpperCase();
             setText(newtext);
             props.showAlert("Converted To UpperCase Succesfully", "success");
             // console.log(text.trim())
-        }else{
-            alert("Pleaase Enter the Text Before")
-        }
+        
     }
     const handleClickLower = () =>{
-    if(text.trim().length !== 0){
         let newtext = text.toLowerCase();
         setText(newtext);
         props.showAlert("Converted To LowerCase Succesfully", "success");
-    }else{
-        alert("Pleaase Enter the Text Before")
-    }
     }
     const handleClickClear = () =>{
-    if(text.trim().length !== 0){
         let newtext = '';
         setText(newtext);
         props.showAlert("Text Cleared Succesfully", "success");
-    }else{
-        alert("Pleaase Enter the Text Before")
-    }
     }
     const handleClickCopy = () =>{
-    if(text.trim().length !== 0){
         let content = text;
         navigator.clipboard.writeText(content);
         props.showAlert("Text Copied Succesfully.", "success");
-    }else{
-        alert("Pleaase Enter the Text Before")
-    }
     }
     const removeExtraSpace = () =>{
-        if(text.trim().length !== 0){
             let content = text;
             var myStr = content.replace(/[ ][ ]*/g, ' ');
             setText(myStr);
             props.showAlert("Extra Space Removed Succesfully.", "success");
-        }else{
-            alert("Pleaase Enter the Text Before")
-        }
     }
     return (
         <>
@@ -76,20 +58,20 @@ export default function Form(props) {
                 </div>  
                 <div className="col-auto">
                     {/* We can use setText like the following */}
-                    <button onClick={handleClickUpper} className="btn btn-primary mx-1 my-1">Convert to Uppecase</button>
-                    <button onClick={handleClickLower} className="btn btn-success mx-1 my-1">Convert to Lowercase</button>
-                    <button onClick={handleClickClear} className="btn btn-danger mx-1 my-1 ">Clear</button>
-                    <button onClick={handleClickCopy} className="btn btn-dark mx-1 my-1">Copy</button>
-                    <button onClick={removeExtraSpace} className="btn btn-warning mx-1 my-1">Remove Extra Spaces</button>
+                    <button onClick={handleClickUpper} className="btn btn-primary mx-1 my-1" disabled={text.length === 0}>Convert to Uppecase</button>
+                    <button onClick={handleClickLower} className="btn btn-success mx-1 my-1"disabled={text.length === 0}>Convert to Lowercase</button>
+                    <button onClick={handleClickClear} className="btn btn-danger mx-1 my-1 "disabled={text.length === 0}>Clear</button>
+                    <button onClick={handleClickCopy} className="btn btn-dark mx-1 my-1"disabled={text.length === 0}>Copy</button>
+                    <button onClick={removeExtraSpace} className="btn btn-warning mx-1 my-1"disabled={text.length === 0}>Remove Extra Spaces</button>
                 </div>
         </div>
         <div className="container">
             <h2>Your Text Summery</h2>
             {/* Here text.split will creat an array spliting by words, and filter will take each of word from it  and check if it is space or not.  it will return the lenth of new array which is filtered. */}
             <p>{text.split(" ").filter((element) => {return element.length !== 0}).length} Words and {text.length} character</p>
-            <p>{0.008 * text.split(" ").length} min To Read</p>
+            <p>{0.008 * text.split(" ").filter((element)=>{return element.length !== 0}).length} min To Read</p>
             <h3>PreView</h3>
-            <p>{text}</p>
+            <p>{text.length > 0 ? text:"Nothing to Preview"}</p>
         </div>
         </>
   )
