@@ -81,7 +81,7 @@ function App() {
 
       {/* i have created one module with Navbar and adding props inside */}
     <Router>
-      <Navbar title="TextUtils" mode = {mode} toogleMode={tooglemode} switchMode={switchMode}/>
+      <Navbar title="TextUtils" mode={mode} toogleMode={tooglemode} switchMode={switchMode} />
       <Alert alert={alert}/>
       {/* I am trying to use Router For better user experience.  */}
       <Routes>
