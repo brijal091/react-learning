@@ -68,7 +68,8 @@ export default function Form(props) {
         <div className="container">
             <h2>Your Text Summery</h2>
             {/* Here text.split will creat an array spliting by words, and filter will take each of word from it  and check if it is space or not.  it will return the lenth of new array which is filtered. */}
-            <p>{text.split(" ").filter((element) => {return element.length !== 0}).length} Words and {text.length} character</p>
+            {/* we are splitting this by a space or by a new line also. using regular expression. */}
+            <p>{text.split(/\s+/).filter((element) => {return element.length !== 0}).length} Words and {text.length} character</p>
             <p>{0.008 * text.split(" ").filter((element)=>{return element.length !== 0}).length} min To Read</p>
             <h3>PreView</h3>
             <p>{text.length > 0 ? text:"Nothing to Preview"}</p>
