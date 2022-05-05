@@ -17,6 +17,34 @@ articles = [
   "content": "If a vaccinated child is highly exposed to Covid at home but is still healthy, parents might consider keeping that child home to protect others. Masks do come off at lunch. But this measure would be … [+1824 chars]"
   },
   {
+    "source": {
+    "id": null,
+    "name": "New York Times"
+    },
+    "author": "Sharon Otterman",
+    "title": "When Covid Enters the House, What Should We Do? - The New York Times",
+    "description": "When someone in the family tests positive for the coronavirus, there are some guidelines to follow.",
+    "url": "https://www.nytimes.com/2022/04/17/nyregion/covid-questions-families.html",
+    "urlToImage": "https://static01.nyt.com/images/2022/04/15/nyregion/00virus_family_explainer1/00virus_family_explainer1-facebookJumbo.jpg",
+    "publishedAt": "2022-04-18T09:01:00Z",
+    "content": "If a vaccinated child is highly exposed to Covid at home but is still healthy, parents might consider keeping that child home to protect others. Masks do come off at lunch. But this measure would be … [+1824 chars]"
+    },
+    {
+      "source": {
+      "id": null,
+      "name": "New York Times"
+      },
+      "author": "Sharon Otterman",
+      "title": "When Covid Enters the House, What Should We Do? - The New York Times",
+      "description": "When someone in the family tests positive for the coronavirus, there are some guidelines to follow.",
+      "url": "https://www.nytimes.com/2022/04/17/nyregion/covid-questions-families.html",
+      "urlToImage": "https://static01.nyt.com/images/2022/04/15/nyregion/00virus_family_explainer1/00virus_family_explainer1-facebookJumbo.jpg",
+      "publishedAt": "2022-04-18T09:01:00Z",
+      "content": "If a vaccinated child is highly exposed to Covid at home but is still healthy, parents might consider keeping that child home to protect others. Masks do come off at lunch. But this measure would be … [+1824 chars]"
+      },
+      
+  
+  {
   "source": {
   "id": null,
   "name": "New York Times"
@@ -45,15 +73,14 @@ articles = [
         <div className="container my-3">
           <h2 className='my-5'>News Monkey | Top HeadLines </h2>
           <div className="row">
-              <div className="col-md-4 my-3">
-                <NewsItem title="My Title" description="My Description Testing for components" imageUrl="https://static01.nyt.com/images/2022/04/15/nyregion/00virus_family_explainer1/00virus_family_explainer1-facebookJumbo.jpg" newsUrl="Todo"/>
-              </div>
-              <div className="col-md-4 my-3">
-                <NewsItem title="My Title" description="My Description Testing for components"/>
-              </div>
-              <div className="col-md-4 my-3">
-                <NewsItem title="My Title" description="My Description Testing for components"/>
-              </div>
+            {/* when we are using map or itreting something we need to give KEY to it. which should be unique. */}
+          {this.state.articles.map((ele) => {
+            return <div className="col-md-4 my-3">
+              {/* we are passing props, of json that are related to ele to the item card */}
+              <NewsItem key={ele.url} title={ele.title} description={ele.description} imageUrl={ele.urlToImage} newsUrl="Todo"/>
+          </div>
+          })}
+              
             </div>
         </div>
       </div>
